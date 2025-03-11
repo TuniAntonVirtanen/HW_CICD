@@ -1,0 +1,50 @@
+name: SystemVerilog CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y yosys
+          sudo apt install -y cmake make g++ libboost-all-dev git
+
+      - name: Install SymbiYosys
+        run: |
+          # Clone SymbiYosys from GitHub
+          git clone https://github.com/YosysHQ/SymbiYosys.git
+          cd SymbiYosys
+          git submodule update --init --recursive
+          # Create build directory and compile
+          mkdir build
+          cd build
+          cmake ..
+          make -j$(nproc)
+          sudo make install
+
+      - name: Run Yosys Synthesis
+        run: |
+          yosys -p 'read_verilog top.sv; synth; show' -o synthesized.out
+
+      - name: Run SymbiYosys Formal Verification
+        run: |
+          sby -f formal_test.sby
+
+      - name: Upload Logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-logs
+          path: |
+            *.log
+            *.out
