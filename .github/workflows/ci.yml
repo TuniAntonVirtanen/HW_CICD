@@ -32,7 +32,7 @@ jobs:
 
       # Complite project using Verilator
       - name: Compile SV files
-        run: verilator --cc --exe --build tb_top.cpp top.sv
+        run: verilator --cc --exe --build --timing tb_top.cpp top.sv
 
       # Runs a set of commands using the runners shell
       - name: Run testbench
