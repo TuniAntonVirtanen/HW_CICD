@@ -16,7 +16,21 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y yosys symbiyosys
+          sudo apt install -y yosys
+          sudo apt install -y cmake make g++ libboost-all-dev git
+
+      - name: Install SymbiYosys
+        run: |
+          # Clone SymbiYosys from GitHub
+          git clone https://github.com/YosysHQ/SymbiYosys.git
+          cd SymbiYosys
+          git submodule update --init --recursive
+          # Create build directory and compile
+          mkdir build
+          cd build
+          cmake ..
+          make -j$(nproc)
+          sudo make install
 
       - name: Run Yosys Synthesis
         run: |
