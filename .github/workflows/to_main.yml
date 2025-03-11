@@ -16,21 +16,17 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y yosys
-          sudo apt install -y cmake make g++ libboost-all-dev git
+          sudo apt install -y yosys wget unzip
 
-      - name: Install SymbiYosys
+      - name: Install SymbiYosys (precompiled binary)
         run: |
-          # Clone SymbiYosys from GitHub
-          git clone https://github.com/YosysHQ/SymbiYosys.git
-          cd SymbiYosys
-          git submodule update --init --recursive
-          # Create build directory and compile
-          mkdir build
-          cd build
-          cmake ..
-          make -j$(nproc)
-          sudo make install
+          # Download the latest precompiled SymbiYosys release
+          wget https://github.com/YosysHQ/SymbiYosys/releases/download/v0.8/sby-linux-x86_64.zip
+          # Unzip the downloaded file
+          unzip sby-linux-x86_64.zip
+          # Move SymbiYosys binary to a directory in PATH
+          sudo mv sby /usr/local/bin/
+          sudo chmod +x /usr/local/bin/sby
 
       - name: Run Yosys Synthesis
         run: |
