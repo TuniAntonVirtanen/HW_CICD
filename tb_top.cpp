@@ -1,5 +1,7 @@
 #include "Vtop.h"
 #include "verilated.h"
+#include <iostream>
+
 int main() {
     Verilated::commandArgs(0, nullptr); //(const char**)
     Vtop* top = new Vtop;
