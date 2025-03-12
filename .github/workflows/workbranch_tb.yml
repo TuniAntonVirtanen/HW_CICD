@@ -35,7 +35,7 @@ jobs:
 
       # Complite project using Verilator
       - name: Compile SV files
-        run: verilator --cc --exe --build --timing tb_top.cpp splitter.sv
+        run: verilator --cc --exe --build --timing tb_splitter.cpp splitter.sv
 
       # Runs a set of commands using the runners shell
       - name: Run testbench

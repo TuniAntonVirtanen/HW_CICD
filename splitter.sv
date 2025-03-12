@@ -1,4 +1,4 @@
-module top(
+module splitter(
     input logic in_signal,
     output logic out_signal1,
     output logic out_signal2
