@@ -1,5 +1,9 @@
 # Simple CI/CD for HW verification
 A simple CI/CD pipeline for COMP.CE.420 course demonstration.
+
+![Alt text](images/CICD_workflow.png)
+
+
 ## Contains:
 - Testbench on the 'work_branch'-branch to test incoming DUT.
 - Linter that is automatically run when work_branch is being merged to main to format tb_top.cpp.
