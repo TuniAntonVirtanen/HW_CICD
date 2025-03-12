@@ -35,9 +35,9 @@ jobs:
 
       # Complite project using Verilator
       - name: Compile SV files
-        run: verilator --cc --exe --build --timing tb_splitter.cpp splitter.sv
+        run: verilator --cc --exe --build --timing tb_splitter.cpp top.sv
 
       # Runs a set of commands using the runners shell
       - name: Run testbench
         run: |
-          ./obj_dir/Vsplitter
+          ./obj_dir/Vtop
