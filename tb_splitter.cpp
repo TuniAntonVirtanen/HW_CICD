@@ -4,7 +4,7 @@
 
 int main() {
 	Verilated::commandArgs(0, (const char**)nullptr);
-	Vtop* top = new Vsplitter;
+	Vtop* top = new Vtop;
 	int out1 = 0;
 	int out2 = 0;
 
