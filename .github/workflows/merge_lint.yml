@@ -1,4 +1,4 @@
-name: Linting C++
+name: Merge C++ lint
 
 on: [ pull_request ]
 

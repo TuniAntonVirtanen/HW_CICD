@@ -1,6 +1,9 @@
-# This is a basic workflow to help you get started with Actions
+#
+#   This runs incoming DUT through predefined testbench
+#   
+#
 
-name: CI Pipeline for simpe HW
+name: Testbench pipeline for DUT
 
 # Controls when the workflow will run
 on:
@@ -32,9 +35,9 @@ jobs:
 
       # Complite project using Verilator
       - name: Compile SV files
-        run: verilator --cc --exe --build --timing tb_top.cpp top.sv
+        run: verilator --cc --exe --build --timing tb_top.cpp splitter.sv
 
       # Runs a set of commands using the runners shell
       - name: Run testbench
         run: |
-          ./obj_dir/Vtop
+          ./obj_dir/Vsplitter
