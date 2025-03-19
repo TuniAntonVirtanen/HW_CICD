@@ -9,14 +9,16 @@ A simple CI/CD pipeline for COMP.CE.420 course demonstration.
 
 - Linter that is automatically run when work_branch is being merged to main to format tb_top.cpp.
 
-- Pre-made DUTs for testing purposes
+- Ruleset to prevent DUTs that don't pass tests from merging to main.
+
+- Pre-made DUTs for testing purposes.
 
 
 
 ## work_branch pipeline:
 The incoming DUT is defined in root/top.sv. This DUT is expected to be a simple splitter where single input is divided to two outputs.
 
-The testbench is defined in root/tb_top.cpp. This TB can cause the pipeline to fail if the DUT doesn't pass the tests.
+The testbench is defined in root/tb_top.cpp. If the DUT doesn't pass the tests, it can't be merged to main.
 
 root/.github/workflows/workbranch_tb.yml config file controls GIT's actions and enables the pipeline functionality.
 
