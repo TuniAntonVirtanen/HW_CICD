@@ -1,7 +1,7 @@
 # Simple CI/CD for HW verification
 A simple CI/CD pipeline for COMP.CE.420 course demonstration.
 
-![Alt text](images/CICD_workflow.png)
+![Alt text](images/CICD_workflow_v2.png)
 
 
 ## Contains:
