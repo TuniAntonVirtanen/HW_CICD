@@ -18,9 +18,3 @@ jobs:
     - name: Format code with clang-format
       run: |
         clang-format -i tb_top.cpp
-     #   find . -iname *.cpp -o -iname *.h | xargs clang-format -i
-    #    git diff --exit-code  # Fail if there are unformatted files
-
-  #  - name: Build the project
-  #    run: |
-  #      make  # or your build command
